@@ -1,0 +1,89 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+.container {
+  position: absolute;
+  max-width: 800px;
+  height: 600px;
+  margin: auto;
+  top: 50%;
+  left: 50%;
+ 
+ background:rgba(211 , 211, 211, 0.5);
+ 
+  transform: translate(-50%, -50%);
+} 
+.myInput{
+	 background:rgba(211 , 211, 211, 0.5);
+}
+
+
+.myLeftCtn {
+  position: relative;
+  
+  margin-top:20px;
+  
+  height: 500px;
+  padding: 25px;
+  padding-left: 50px;
+   background: #fff;
+    box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
+	border-top-left-radius: 25px;
+	border-bottom-left-radius: 25px;
+}
+.myLeftCtn header {
+  color: black;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.row{
+height: 100%;
+} 
+.myRightCtn {
+  
+  position:relative;
+  margin-top:20px;
+  background-color:red;
+   border-top-right-radius: 25px;
+   border-bottom-right-radius: 25px;
+ right:30px;
+  height: 500px;
+  padding: 25px;
+  color: rgb(192, 192, 192);
+  font-size: 12px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.myRightCtn header {
+  color: #fff;
+ font-weight:100px;
+}
+.box {
+  position:relative;
+ 
+  margin: 20px;
+  margin-bottom: 100px;
+} 
+  justify-content:center;
+} 
+.myLeftCtn .myInput {
+  width: 230px;
+  padding: 10px;
+  padding-left: 50px;
+  border: none;
+  background:rgba(211 , 211, 211, 0.5);
+  background-color:#ebf0ec;
+  box-shadow: 0px 10px 49px -14px rgba(201, 199, 193);
+}
+.myLeftCtn .myInput:focus {
+  outline: none;
+} 
+.myForm {
+  position: relative;
+  margin-top: 50px;
+} 

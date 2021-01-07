@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+<form>
+ <title>Form Validation</title>      
+      <script type = "text/javascript">
+       function validate() {
+      
+         if( document.myForm.Name.value == "" ) {
+            alert( "Please provide your name!" );
+            document.myForm.Name.focus() ;
+            return false;
+         }
+         if( document.myForm.EMail.value == "" ) {
+            alert( "Please provide your Email!" );
+            document.myForm.EMail.focus() ;
+            return false;
+         }
+         
+         }
+         if( document.myForm.password.value == "-1" ) {
+            alert( "Please provide your country!" );
+            return false;
+         }
+         return( true );
+		 function myFunction() {
+  alert("The form was submitted");
+      }
+      </script>      
+   </head>
+   
+   <body>
+     <form name="myForm" action="" onsubmit="return validate()" method="post">
+
+            
+                <label>Name</label>
+               <input type = "text" name = "Name" />
+               <br>
+            
+            
+               <label>EMail</label>
+               <input type = "text" name = "EMail" />
+                  <br>
+				  
+               <label >password</label>
+               <input type = "password" name = "password" />
+                  <br>
+            
+            
+            
+               <label >send</label>
+               <input type = "submit" value = "Submit" />
+            
+			<form action="/action_page.php" onsubmit="myFunction()">
+  Enter name: <input type="text" name="fname">
+  <input type="submit" value="Submit">
+</form>
+
+
+        
+      </form>      
+   </body>
+</html>
+
