@@ -1,9 +1,9 @@
 <?php
-if (!isset($_GET['id']))
-{   header('Location: loginn.php?');
-}
+
 
 $user_id=$_GET['id']; 
+
+
 
 include('connection.php');
 $user_data= mysqli_fetch_array(mysqli_query($con, "SELECT * FROM tblproducts where productId=".$user_id.""));
@@ -11,7 +11,7 @@ $user_data= mysqli_fetch_array(mysqli_query($con, "SELECT * FROM tblproducts whe
 
 if(isset($_POST['submit']))
 {
-
+  $target="uploads/".basename($_FILES['image']['name']); 
 		//update the user
 		 $id = $_POST['pid'] ; 
 	 $name = $_POST['title'] ;   //variables where form data is saved//
@@ -21,13 +21,23 @@ if(isset($_POST['submit']))
 	  $disc = $_POST['pdis'] ;
 	   $size = $_POST['psize'] ;
 	   $detail = $_POST['pdetail'] ;
-	 
+	    $image=$_FILES['image']['name'];
+		
+	  if(move_uploaded_file($_FILES['image']['tmp_name'], $target )){
+		   
+	echo " <br> image uploaded successfully";}
+	else{
+		echo "image could not be  uploaded ";
+	}
 	/* echo "UPDATE tblproducts SET  productId='$id' ,productName = '$name',productCode='$code',productSizes='$size',productPrice='$price',
 		 productInstock='$stock',productDiscount='$disc',productDetails='$detail'  WHERE productId = '$user_id'";*/
+		 
 	mysqli_query($con,"UPDATE tblproducts SET  productId='$id' ,productName = '$name',productCode='$code',productSizes='$size',productPrice='$price',
-		 productInstock='$stock',productDiscount='$disc',productDetails='$detail'  WHERE productId = '$user_id'");
+		 productInstock='$stock',productDiscount='$disc',productDetails='$detail',image='$image'  WHERE productId = '$user_id'");
 	
-		header('Location: vieww.php');
+	
+    header('Location: vieww.php');
+		
 	
 }
 
@@ -44,10 +54,7 @@ if(isset($_POST['submit']))
 <body>
 	<div class="container">
 		<h2>Edit User</h2><br>
-		
-		
-		
-		<form action=""  method="POST"   >
+		<form action=""  method="POST" enctype="multipart/form-data" >
 			<div class="form-group">
 				<label >Product ID:</label>
 				<input type="text" class="form-control"  placeholder="Enter id" name="pid" 
@@ -89,7 +96,9 @@ if(isset($_POST['submit']))
 			 <input type="text"   class="form-control" placeholder="Enter remaining details" name="pdetail" 
 			 value="<?php echo  $user_data['productDetails'] ?>" >
 			</div>
-			
+			<div class="form-group">
+			 <input type="file"   class="form-control"  name="image"  value="<img src="uploads/<?php echo $user_data['image'];?>"width="100" height="100">
+			</div>
 			<button type="submit" name="submit" class="btn btn-default">Submit</button>
 		</form>
 	</div>
